@@ -11,3 +11,7 @@
 ## ui
 
 [腾讯tdesign风格plus按钮样式](https://github.com/theseazhang/awesome-aardio/blob/main/style.aardio)
+
+## code
+
+[wev.view远程调试切换UA示例](https://github.com/theseazhang/awesome-aardio/commit/3d7c6af8f9890c0553ac9c43b5701055a8735314)
