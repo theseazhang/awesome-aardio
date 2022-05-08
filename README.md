@@ -7,6 +7,7 @@
 ## lib
 
 [stringex-常用文本扩展库](https://github.com/theseazhang/awesome-aardio/blob/main/stringex.aardio)
+[emoji-表情字符识别、删除](https://github.com/theseazhang/awesome-aardio/blob/main/emoji)
 
 ## ui
 
