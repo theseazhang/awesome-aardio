@@ -1,0 +1,83 @@
+//零宽加密
+import win.ui
+/*DSG{{*/
+var winform = win.form(text="零宽加密";right=759;bottom=414)
+winform.add(
+button={cls="button";text="零宽字符加密";left=115;top=345;right=290;bottom=390;z=2};
+button2={cls="button";text="零宽字符解密";left=430;top=345;right=605;bottom=390;z=3};
+edit={cls="edit";left=5;top=10;right=755;bottom=325;autohscroll=false;bgcolor=16777215;db=1;dl=1;dr=1;dt=1;edge=1;multiline=1;vscroll=1;z=1}
+)
+/*}}*/
+
+import console
+
+textToBinary = function(str){
+	var bin = {}
+	for(i=1;#str;1){
+		bin[i] = string.format("%08b", str[i])
+	}
+	return string.join(bin, "-"); 
+}
+
+textToZeroWidth = function(str){
+	if(!#str) return str; 
+	var t = string.split(textToBinary(str))
+	var d = {}
+	var a, b, c = string.unescape('\u200C'), string.unescape('\u200D'), string.unescape('\u200E')
+	for(i=1;#t;1){
+		select(t[i]) {
+			case "1" d[i] = a
+			case "0" d[i] = b
+			case "-" d[i] = c
+		}
+	}
+	return string.join(d, ""); 
+}
+
+zeroWidthToText = function(str){
+	if(!#str) return;
+	var s = string.escape(str)
+	if(!s) return;
+	
+	if(string.match(s, "\\u200[CDE]")){
+		s = string.replace(s, "@\u200C", "1")
+		s = string.replace(s, "@\u200D", "0")
+		s = string.replace(s, "@\u200E", "-")
+		s = string.match(s, "([01]{8,8}.*[01]{8,8})")
+		var bin = string.split(s, "-")
+		var buf = raw.buffer(#bin)
+		for(i=1;#buf;1){
+			buf[i] = tonumber(bin[i], 2)
+		}
+		return tostring(buf);
+	}
+}
+
+winform.edit.limit = -1
+
+import win.clip
+
+winform.button.oncommand = function(id,event){
+	var text = winform.edit.text
+	if(#text) {
+		win.clip.write(textToZeroWidth(text))
+		winform.msgbox("加密成功，已复制到剪贴板")
+	}
+	else {
+		winform.msgboxErr("请先复制待加密文本到编辑框")
+	}
+}
+
+winform.button2.oncommand = function(id,event){
+	var text = winform.edit.text
+	if(#text) {
+		var x = zeroWidthToText(text)
+		if(x) winform.msgbox("解密成功："+x)
+		else winform.msgboxErr("解密失败，当前文本中未发现加密信息！")
+	}
+	else winform.msgboxErr("请先复制待解密文本到编辑框")
+}
+
+winform.show();
+win.loopMessage();
+return winform;
