@@ -12,6 +12,10 @@
 
 [emoji - 表情字符识别、删除](https://github.com/theseazhang/awesome-aardio/blob/main/emoji) 作者：[theseazhang](https://github.com/theseazhang)
 
+[zero_width - 零宽字符加解密的aardio实现](https://github.com/theseazhang/awesome-aardio/blob/main/zero_width.aardio) 作者：[theseazhang](https://github.com/theseazhang)
+
+
+
 ### 图形图像
 
 [opencv_aardio - aardio的opencv库 ](https://github.com/xuncv/opencv_aardio#opencv_aardio) 作者：[xuncv](https://github.com/xuncv)
